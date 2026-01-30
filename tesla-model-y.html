@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Model Y</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #171a20;
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #171a20;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.6;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p.tagline {
+            font-size: 1.25rem;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero .cta-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2.5rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: transform 0.2s, opacity 0.2s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+        }
+
+        .btn-primary {
+            background: #3e6ae1;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .specs {
+            padding: 6rem 2rem;
+            background: #f5f5f5;
+        }
+
+        .specs h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .spec-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .spec-card .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3e6ae1;
+        }
+
+        .spec-card .unit {
+            font-size: 1rem;
+            color: #3e6ae1;
+            font-weight: 500;
+        }
+
+        .spec-card .label {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .features {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-item {
+            padding: 1.5rem 0;
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .feature-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-section {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            background: #0f0f0f;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .cta-group {
+                flex-direction: column;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Tesla</div>
+    <ul>
+        <li><a href="#specs">Specs</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#order">Order</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h1>Model Y</h1>
+    <p class="tagline">The SUV designed for everything — and everyone.</p>
+    <div class="cta-group">
+        <a href="#order" class="btn btn-primary">Order Now</a>
+        <a href="#specs" class="btn btn-secondary">View Specs</a>
+    </div>
+</section>
+
+<section class="specs" id="specs">
+    <h2>At a Glance</h2>
+    <div class="specs-grid">
+        <div class="spec-card">
+            <div class="value">310</div>
+            <div class="unit">miles</div>
+            <div class="label">Estimated Range</div>
+        </div>
+        <div class="spec-card">
+            <div class="value">4.8</div>
+            <div class="unit">seconds</div>
+            <div class="label">0-60 mph</div>
+        </div>
+        <div class="spec-card">
+            <div class="value">135</div>
+            <div class="unit">mph</div>
+            <div class="label">Top Speed</div>
+        </div>
+        <div class="spec-card">
+            <div class="value">76</div>
+            <div class="unit">cu ft</div>
+            <div class="label">Cargo Space</div>
+        </div>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <h2>Why Model Y</h2>
+    <div class="feature-list">
+        <div class="feature-item">
+            <div class="icon">&#9889;</div>
+            <h3>All-Electric Performance</h3>
+            <p>Instant torque and smooth acceleration powered by a dual motor all-wheel drive system.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">&#128737;</div>
+            <h3>Top Safety Ratings</h3>
+            <p>Designed from the ground up with a rigid structure and low center of gravity for maximum protection.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">&#128295;</div>
+            <h3>Over-the-Air Updates</h3>
+            <p>Your car keeps getting better with regular software updates that add features and improve performance.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">&#127759;</div>
+            <h3>Supercharger Network</h3>
+            <p>Access thousands of Superchargers worldwide for fast, convenient charging on the go.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">&#128187;</div>
+            <h3>15" Touchscreen</h3>
+            <p>A minimalist interior centered around a responsive touchscreen that controls nearly everything.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">&#129302;</div>
+            <h3>Autopilot</h3>
+            <p>Advanced driver-assistance features designed to provide added safety and convenience.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="order">
+    <h2>Experience Model Y</h2>
+    <p>Configure your Model Y and get an estimated delivery date.</p>
+    <a href="#" class="btn btn-primary">Order Now</a>
+</section>
+
+<footer>
+    <p>&copy; 2026 Tesla, Inc. &mdash; Fan Page. Not affiliated with Tesla.</p>
+</footer>
+
+</body>
+</html>
